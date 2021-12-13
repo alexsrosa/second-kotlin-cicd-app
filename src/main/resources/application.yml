@@ -4,3 +4,12 @@ spring:
     name: second-kotlin-cicd-app
   main:
     allow-bean-definition-overriding: true
+
+management:
+  endpoint:
+    restart:
+      enabled: true
+    health:
+      enabled: true
+    info:
+      enabled: true
