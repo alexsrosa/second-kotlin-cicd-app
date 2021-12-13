@@ -1,0 +1,9 @@
+
+spring:
+  application:
+    name: second-kotlin-cicd-app
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    kubernetes:
+      enabled: false
