@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: second-kotlin-cicd-app-ingress
+  namespace: apps
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+#    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  labels:
+    app: second-kotlin-cicd-app
+spec:
+  rules:
+#    - host: {{ .Values.application.host }}{{ .Values.ingress.domain }}
+     - http:
+        paths:
+          - path: /api(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: second-kotlin-cicd-app
+                port:
+                  number: 8080
+  ingressClassName: nginx

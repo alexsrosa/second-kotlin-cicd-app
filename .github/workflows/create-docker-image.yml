@@ -1,0 +1,43 @@
+name: Create Docker Image CI
+
+on:
+  push:
+    branches: [ developement, staging, main ]
+    
+env:
+  IMAGE_NAME: second-kotlin-cicd-app
+  REGISTRY: registry.digitalocean.com/sa-container-registry-dev # TODO: Customize name of registry
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps: 
+    
+    - name: Git Checkout
+      uses: actions/checkout@v2
+      
+      
+    - name: Prepare
+      id: prep
+      run: |
+        TAG=${GITHUB_REF##*/}-${GITHUB_SHA::7}-$(date +%s)
+        echo ::set-output name=TAG::${TAG}      
+      
+    - name: Build the Docker image
+      run: |
+        echo ${{ steps.prep.outputs.TAG }}
+        docker build . --file Dockerfile --tag $REGISTRY/$IMAGE_NAME:${{ steps.prep.outputs.TAG }}
+      
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2.1.0
+      with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }} # TODO: Customize name of secret
+          
+    - name: Log in to DigitalOcean Container Registry with short-lived credentials
+      run: doctl registry login --expiry-seconds 600
+
+    - name: Push image to DigitalOcean Container Registry
+      run: docker push $REGISTRY/$IMAGE_NAME:${{ steps.prep.outputs.TAG }}
