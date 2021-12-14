@@ -25,4 +25,9 @@ class SecondApiController {
     fun another(model: Model): String {
         return UUID.randomUUID().toString()
     }
+
+    @GetMapping("/anotherYuri")
+    fun anotherYuri(model: Model): String {
+        return UUID.randomUUID().toString()
+    }
 }

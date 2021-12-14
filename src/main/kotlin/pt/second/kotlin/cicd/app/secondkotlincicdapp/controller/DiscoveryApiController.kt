@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.RestController
  */
 @RestController
 @RequestMapping("/v1/services")
-class DiscoveryApiController {
-
-    @Autowired
-    private val discoveryClient: DiscoveryClient? = null
+class DiscoveryApiController (
+    private val discoveryClient: DiscoveryClient
+) {
 
     @GetMapping
     fun services(): List<String?>? {
-        return discoveryClient!!.services
+        return discoveryClient.services
     }
 }
