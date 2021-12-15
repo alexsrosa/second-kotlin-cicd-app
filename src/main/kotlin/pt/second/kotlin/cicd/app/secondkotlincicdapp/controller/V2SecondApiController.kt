@@ -11,7 +11,7 @@ import kotlin.collections.ArrayList
  * @since 04/12/2021 17:34
  */
 @RestController
-@RequestMapping("/v2/second")
+@RequestMapping("/v2/changed")
 class V2SecondApiController {
 
     @GetMapping
