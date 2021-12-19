@@ -18,9 +18,9 @@ spec:
       app: second-kotlin-cicd-app
   template:
     metadata:
-      #      annotations:
-      #        prometheus.io/scrape: "true"
-      #        prometheus.io/port: "9797"
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9797"
       labels:
         app: second-kotlin-cicd-app
     spec:

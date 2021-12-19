@@ -10,7 +10,7 @@ metadata:
     app: second-kotlin-cicd-app
 spec:
   rules:
-#    - host: {{ .Values.application.host }}{{ .Values.ingress.domain }}
+#    - host: {{ .Values.application.host }}{{ .Values.ingress.domain }} firstapp.softwareangels.pt
      - http:
         paths:
           - path: /pt(/|$)(.*)
