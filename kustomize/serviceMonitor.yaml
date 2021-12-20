@@ -11,5 +11,5 @@ spec:
     matchNames:
       - apps
   endpoints:
-    - port: http-traffic
+    - port: http
       path: "/actuator/prometheus"
