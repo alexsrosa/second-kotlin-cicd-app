@@ -5,6 +5,9 @@ metadata:
   namespace: apps
   labels:
     app: second-kotlin-cicd-app
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/path: '/actuator/prometheus'
 spec:
   minReadySeconds: 3
   revisionHistoryLimit: 5
@@ -18,9 +21,6 @@ spec:
       app: second-kotlin-cicd-app
   template:
     metadata:
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/path: '/actuator/prometheus'
       labels:
         app: second-kotlin-cicd-app
     spec:
