@@ -1,12 +1,15 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: second-kotlin-cicd-app
-  namespace: apps
+  name: second-kotlin-cicd-app-sm
+  namespace: monitoring
 spec:
   selector:
     matchLabels:
       app: second-kotlin-cicd-app
+  namespaceSelector:
+    matchNames:
+      - apps
   endpoints:
     - port: http-traffic
       path: "/actuator/prometheus"
