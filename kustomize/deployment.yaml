@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: second-kotlin-cicd-app
-          image: registry.digitalocean.com/sa-container-registry-dev/second-kotlin-cicd-app:main-6c1fa37-1639944170 # {"$imagepolicy": "flux-system:second-kotlin-cicd-app"}
+          image: registry.digitalocean.com/sa-container-registry-dev/second-kotlin-cicd-app:main-ea75be8-1639945087 # {"$imagepolicy": "flux-system:second-kotlin-cicd-app"}
           imagePullPolicy: Always
           ports:
             - name: http
