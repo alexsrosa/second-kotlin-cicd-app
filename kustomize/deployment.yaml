@@ -20,7 +20,7 @@ spec:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
-        prometheus.io/port: "9797"
+        prometheus.io/path: '/actuator/prometheus'
       labels:
         app: second-kotlin-cicd-app
     spec:
