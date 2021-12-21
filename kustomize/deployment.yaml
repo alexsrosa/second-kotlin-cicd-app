@@ -35,13 +35,26 @@ spec:
             - name: http-actuator
               containerPort: 8081
               protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
           livenessProbe:
             httpGet:
               path: /actuator/health
               port: 8081
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            failureThreshold: 2
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 20
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 10
           resources:
             limits:
               cpu: 2000m
