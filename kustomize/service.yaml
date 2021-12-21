@@ -17,3 +17,7 @@ spec:
       port: 8080
       protocol: TCP
       targetPort: http
+    - name: http-actuator
+      port: 8081
+      protocol: TCP
+      targetPort: http
